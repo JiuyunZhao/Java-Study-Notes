@@ -1,2 +1,4 @@
-# Java-Study-Notes
-Java study notes
+工作中一直使用的是Python，最近想要学习一门新的编程语言，再三思量之下，还是决定学习Java。
+
+
+
