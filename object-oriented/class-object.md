@@ -20,8 +20,8 @@
 
 **成员变量：**在类体之中、方法之外的变量称之为成员变量。成员变量如果没有手动赋值的话，系统会自动赋予默认值（一切向“0”看齐）。成员变量又分为：
 
-* **实例变量（没有static修饰符）  **
-* **静态变量（有static修饰符）  **
+* **实例变量（没有static修饰符）**
+* **静态变量（有static修饰符）**
 
 **注意：**类也是一种数据类型，属于引用数据类型，它的类型名称就是对应的类名。
 
@@ -89,8 +89,8 @@ public void set+属性名首字母大写(形参列表){
 
 关于构造方法，还应该注意以下几点：
 
-* **构造方法支持重载机制。  **
-* 因为实例变量是属于实例的，所以**构造方法是先创建对象再初始化实例变量。  **
+* **构造方法支持重载机制**。
+* 因为实例变量是属于实例的，所以**构造方法是先创建对象再初始化实例变量**。
 
 ### 7、this关键字
 
@@ -186,23 +186,23 @@ public class Animal{
            System.out.println("动物在移动！");
        }
    }
-   
+
    public class Cat extends Animal{
        public void run(){
            System.out.println("猫在散步！");
        }
-       
+
        public void catchMouse(){
            System.out.println("猫在抓老鼠！");
        }
    }
-   
+
   public class Bird extends Animal{
       public void run(){
            System.out.println("鸟儿在飞翔！");
        }
   }
-  
+
    public class Test{
        public static void main(String[] args){
            // 此处为向上转型，从Cat类型自动转换为Animal类型
@@ -214,14 +214,14 @@ public class Animal{
            // 在编译阶段会将符合语法的该对象的方法绑定，这个过程称之为静态绑定，只有静态绑定成功之后才能运行程序。这个例子中，静态绑定是将Animal的move方法绑定到cat1对象，因为cat1是声明为Animal类型的，而Animal类是有move方法的，所以能绑定成功。
            // 在运行阶段则会将实际运行的方法绑定到该对象上，这个过程称之为动态绑定，这个例子中，动态绑定是，在运行时，由于是先在内存中生成的对象是new出来的Cat类型的对象，虽然在等号赋值运算时类型被转换为Animal类型了，但是内存中其实还是那个被创建好的Cat类型的cat1对象，所以会执行Cat类中的move方法。
            cat1.run();  // 输出为：猫在散步！
-           
+
            // 此处会编译不通过，虽然cat对象有catchMouse方法，但是类型转换后，因为Animal类型中没有catchMouse方法，所以编译不通过，即静态绑定失败。当然，也就不可能继续运行了。
            cat1.catchMouse();
-           
+
            // 向下转型，这里不仅能编译通过，还能正确执行catchMouse方法，因为cat1其本质就是最初在内存中创建的Cat类型对象，而Cat类是由这个方法的
            Cat cat2 = (Cat)cat1;
            cat2.catchMouse();
-           
+
            // 此处的向下转型编译能能通过，但是运行会报错java.lang.ClassCastException（除了空指针异常之外另一个著名的异常），即类型转换异常，而且只有在向下转型的时候会发生。
            // 因为第一个语句向上转型后，其实际还是个Bird类型对象，在第二个语句的向下转型，因为
            // Animal类型和Cat类型之间具有继承关系，所以可以编译通过，但是运行时由于它本质是Bird类型
@@ -237,6 +237,4 @@ public class Animal{
 **语法：**“引用 instanceof 数据类型名”，返回值为true/false，true表示这个引用指向的内存真实对象就是该数据类型的对象，false则表示这个引用指向的内存真实对象不是该数据类型的对象。如上例中“Animal bird1 = new Bird\(\);”的bird1虽然转换成了Animal类型，但其真实内存对象其实是Bird类型的，所以如果执行“bird1 isinstanceof Bird”就会返回true。
 
 Java编程规范中，在进行强制类型转换时，建议先使用instanceof运算符判断引用的类型再进行转换。
-
-
 

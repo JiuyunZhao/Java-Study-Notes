@@ -23,16 +23,16 @@ public class StaticTest{
      static{
          System.out.println("--->1");
      }
-     
+
      static{
          System.out.println("--->2");
      }
-     
+
      public static void main(String[] args){
          System.out.println("main method!!!");
      }
  }
- 
+
  // 运行结果为：可以看到静态代码块在main方法之前运行了。
  // --->1
  // --->2
