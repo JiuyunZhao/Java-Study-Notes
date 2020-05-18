@@ -66,18 +66,18 @@ public void set+属性名首字母大写(形参列表){
 
 ```java
 public class A{
-	private int age;
-	
-	public int getAge(){
-		// 这里可以使用this.age，也可以不用this
+    private int age;
+
+    public int getAge(){
+        // 这里可以使用this.age，也可以不用this
         // return this.age
         return age;
-	}
-	
-	public void setAge(int age){
-		// 这里因为形参和属性名相同了，所以必须用this加以区分
+    }
+
+    public void setAge(int age){
+        // 这里因为形参和属性名相同了，所以必须用this加以区分
         this.age = age;
-	}
+    }
 }
 ```
 
@@ -186,7 +186,7 @@ class A{
 class B extends A{
     public B(){
         // 由main方法的输出可以看出类A的无参构造方法也是被执行的，
-        // 其实
+        // 其实如果没有手动调用super()，此处会默认执行一个super()
         // super();
         System.out.println("类B的无参构造方法！");
     }
