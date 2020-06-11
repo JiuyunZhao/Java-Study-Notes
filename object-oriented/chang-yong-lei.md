@@ -10,8 +10,6 @@ Java中内置类及其方法的使用通常翻阅对应的API文档即可，但�
 
 **System.arraycopy​\(Object src, int srcPos, Object dest, int destPos, int length\)：**从源数组src中拷贝若干length连续的元素到目标数组dest当中，src为源数组，srcPos为源数组的起始下标，dest为目标数组，destPos为目标数组的起始下标，length为拷贝的元素个数或长度。
 
-
-
 ### 二、Object
 
 **protected Object clone\(\)：**返回对象的克隆，注意这个方法的修饰符为protected，只有子类或同一个包下才能使用。
@@ -21,8 +19,6 @@ Java中内置类及其方法的使用通常翻阅对应的API文档即可，但�
 **boolean equals\(Object obj\)：**判断两个对象是否相等，默认使用“==”进行判断。注意，“==”的判断其实判断的是变量的值，对于引用类型就是比较的是内存地址，但这通常不是我们想要的结果，因为对于两个对象的比较，我们大多时候认为同一个类的对象，如果它们的属性等对象的内容是相同的话，那么这两个对象也可以认为它们是相同的，而不是去判断那它们的内存地址，所以这种时候就需要重写这个方法了。也由此可以看出，平时判断相等时，如果是基本数据类型则使用“==”进行判断，如果是引用数据类型，如String等，则需要使用它自带的equals方法。
 
 **String toString\(\)：**将对象转换成字符串形式，默认为“类名@对象的内存地址”。在打印某个对象时，也会自动调用对象的这个方法。但是因为这个方法默认的返回值很多时候并不是我们想要的，所以通常都是在需要使用的时候重写它，而不是使用它的默认值。
-
-
 
 ### 三、String
 
@@ -55,7 +51,8 @@ String s5 = new String(chars, 2, 3);
 System.out.println(s5);  // 输出：llo
 ```
 
-**常用方法：**
+**常用方法：  
+**
 
 * **char charAt\(int index\)：**返回指定索引处的char值。
 * **int compareTo\(String anotherString\)：**按字符顺序比较两个字符串大小，全部字符都相等则返回0，如果同一个索引位置的字符不相同，就不会再继续比较下去了，并且比较这两个字符，前者大于后者则返回1，前者小于后者则返回-1。
@@ -80,8 +77,6 @@ System.out.println(s5);  // 输出：llo
 * **String trim\(\)：**返回一个去处字符串前后空白的字符串。
 * **String valueOf\(\)：**将另一个不是String的对象转换为字符串对象。注意这是一个静态方法，即使用的时候应该这样“String s = String.valueOf\(111\);”。
 
-
-
 ### 四、StringBuffer/StringBuilder
 
 如果需要进行大量的字符串拼接操作，建议使用Java自带的StringBuffer或StringBuilder，而不是使用加号+。
@@ -95,7 +90,7 @@ public class Test{
         // StringBuffer stringBuffer = new StringBuffer();
         // 创建一个指定长度的StringBuffer
         StringBuffer stringBuffer = new StringBuffer(100);
-        
+
         // 拼接字符串统一调append方法，当拼接的字符串长度超过了16或者指定的容量，这个byte[]数组会自动扩容
         stringBuffer.append("abc");
         stringBuffer.append(3.14);
@@ -109,8 +104,6 @@ public class Test{
 **StringBuilder和StringBuffer的区别：**两者在示例的使用上都一样的，都可以用于字符串的拼接，但区别在于StringBuffer是有synchronized关键字修饰的，表示在多线程的环境下是线程安全的，StringBuilder则没有synchronized关键字修饰，表示不是线程安全的。
 
 **对比String：**String的底层其实是一个final类型的byte\[\]， StringBuffer底层同样是一个byte\[\]，但区别是没有final修饰符，因为数组的长度一旦确定了就不能改变，这表示final修饰的String类型的变量（引用）指向的内存地址是不能改变的，即该字符串是不能改变的，但是如果没有final修饰符，则这个数组满了之后可以扩容，StringBuffer的变量就可以指向扩容后新的数组的内存地址。说到String的这个final，特别需要注意的是，对于如“String s = "hello";”而言，final修饰的是“"hello"”这个字符串对象本身，而不是变量s（引用），s是可以重新给它赋值的。
-
-
 
 ### 五、8中基本数据类型的包装类
 
@@ -153,10 +146,10 @@ public class Test{
     public static void main(String[] args){
         // 自动装箱：自动将基本数据类型转换为引用数据类型
         Integer i = 100;
-        
+
         // 自动拆箱：自动将包装类对象转换为基本数据类型
         int iv = i;
-        
+
         // 对于算术运算，会进行自动拆箱操作
         System.out.println(i + 1);
     }
@@ -172,8 +165,6 @@ public class Test{
 * **static String toBinaryString\(int i\)：**将十进制的整数转换为二进制的字符串。
 * **static String toHexString\(int i\)：**将十进制的整数转换为十六进制的字符串。
 * **static String toOctalString\(int i\)：**将十进制的整数转换为八进制的字符串。
-
- 
 
 ### 六、Date/SimpleDateFormat
 
@@ -225,16 +216,16 @@ public class DateTest {
 | Letter | Date or Time Component | Presentation | Examples |
 | :--- | :--- | :--- | :--- |
 | `G` | Era designator | [Text](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/text/SimpleDateFormat.html#text) | `AD` |
-| `y` | Year | [Year](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/text/SimpleDateFormat.html#year) | `1996`; `96` |
-| `Y` | Week year | [Year](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/text/SimpleDateFormat.html#year) | `2009`; `09` |
-| `M` | Month in year \(context sensitive\) | [Month](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/text/SimpleDateFormat.html#month) | `July`; `Jul`; `07` |
-| `L` | Month in year \(standalone form\) | [Month](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/text/SimpleDateFormat.html#month) | `July`; `Jul`; `07` |
+| `y` | Year | [Year](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/text/SimpleDateFormat.html#year) | `1996`; `96` |
+| `Y` | Week year | [Year](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/text/SimpleDateFormat.html#year) | `2009`; `09` |
+| `M` | Month in year \(context sensitive\) | [Month](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/text/SimpleDateFormat.html#month) | `July`; `Jul`; `07` |
+| `L` | Month in year \(standalone form\) | [Month](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/text/SimpleDateFormat.html#month) | `July`; `Jul`; `07` |
 | `w` | Week in year | [Number](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/text/SimpleDateFormat.html#number) | `27` |
 | `W` | Week in month | [Number](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/text/SimpleDateFormat.html#number) | `2` |
 | `D` | Day in year | [Number](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/text/SimpleDateFormat.html#number) | `189` |
 | `d` | Day in month | [Number](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/text/SimpleDateFormat.html#number) | `10` |
 | `F` | Day of week in month | [Number](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/text/SimpleDateFormat.html#number) | `2` |
-| `E` | Day name in week | [Text](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/text/SimpleDateFormat.html#text) | `Tuesday`; `Tue` |
+| `E` | Day name in week | [Text](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/text/SimpleDateFormat.html#text) | `Tuesday`; `Tue` |
 | `u` | Day number of week \(1 = Monday, ..., 7 = Sunday\) | [Number](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/text/SimpleDateFormat.html#number) | `1` |
 | `a` | Am/pm marker | [Text](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/text/SimpleDateFormat.html#text) | `PM` |
 | `H` | Hour in day \(0-23\) | [Number](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/text/SimpleDateFormat.html#number) | `0` |
@@ -244,17 +235,15 @@ public class DateTest {
 | `m` | Minute in hour | [Number](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/text/SimpleDateFormat.html#number) | `30` |
 | `s` | Second in minute | [Number](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/text/SimpleDateFormat.html#number) | `55` |
 | `S` | Millisecond | [Number](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/text/SimpleDateFormat.html#number) | `978` |
-| `z` | Time zone | [General time zone](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/text/SimpleDateFormat.html#timezone) | `Pacific Standard Time`; `PST`; `GMT-08:00` |
+| `z` | Time zone | [General time zone](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/text/SimpleDateFormat.html#timezone) | `Pacific Standard Time`; `PST`; `GMT-08:00` |
 | `Z` | Time zone | [RFC 822 time zone](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/text/SimpleDateFormat.html#rfc822timezone) | `-0800` |
-| `X` | Time zone | [ISO 8601 time zone](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/text/SimpleDateFormat.html#iso8601timezone) | `-08`; `-0800`; `-08:00` |
-
-
+| `X` | Time zone | [ISO 8601 time zone](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/text/SimpleDateFormat.html#iso8601timezone) | `-08`; `-0800`; `-08:00` |
 
 ### 七、数字格式化
 
 数字格式化应该使用“java.text.DecimalFormat”，如果处理大数据或者财务数据，应该使用“java.math.BigDecimal”，因为它的精度极高，具体使用可参阅API文档。
 
-**部分格式化字符：**
+**部分格式化字符：**
 
 * **\#：**井号表示任意字符。
 * **,：**逗号表示千分位。
@@ -277,8 +266,6 @@ public class DecimalFormatTest{
 }
 ```
 
-
-
 ### 八、随机数
 
 想要生成一个随机数，应该使用“java.util.Random”，详细用法请参阅API文档。
@@ -297,8 +284,6 @@ public class RandomTest{
     }
 }
 ```
-
-
 
 ### 九、枚举
 
@@ -320,7 +305,7 @@ public class Test{
         Result res = divide(3, 0);
         System.out.println(res);
     }
-    
+
     public static Result divide(int a, int b){
         try{
             int c = a / b;
