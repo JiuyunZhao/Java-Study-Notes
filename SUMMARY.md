@@ -15,5 +15,5 @@
   * [类和对象](object-oriented/class-object.md)
   * [修饰符](object-oriented/modifier.md)
   * [常用类](object-oriented/chang-yong-lei.md)
-  * 集合
+  * [集合](object-oriented/ji-he.md)
 
