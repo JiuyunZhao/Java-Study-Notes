@@ -2,15 +2,13 @@
 
 异常也是类，每一个异常类都可以创建异常对象。
 
-异常继承结构：通过帮助文档中可以看到，java.lang.Object --&gt; java.lang.Throwable，而Throwable下有两个子类Error和Exception，它们都是可以抛出的，对于这两个子类分支，Error分支下的子类（包括Error自身）称之为错误，错误一旦发生，通常是直接就退出程序了，没有办法及时去处理。而Exception分支下的子类（包括Exception自身）称之为异常，异常是可以在代码层面提前去处理的，Exception的子类又可以分为两个分支，一个分支是RuntimeException及其子类，称为运行时异常，另一个分支就是除RuntimeException外的其它Exception的直接子类，也称为编译时异常。
+**异常继承结构：**通过帮助文档中可以看到，java.lang.Object --&gt; java.lang.Throwable，而Throwable下有两个子类Error和Exception，它们都是可以抛出的，对于这两个子类分支，Error分支下的子类（包括Error自身）称之为错误，错误一旦发生，通常是直接就退出程序了，没有办法及时去处理。而Exception分支下的子类（包括Exception自身）称之为异常，异常是可以在代码层面提前去处理的，Exception的子类又可以分为两个分支，一个分支是RuntimeException及其子类，称为运行时异常，另一个分支就是除RuntimeException外的其它Exception的直接子类，也称为编译时异常。
 
-编译时异常：之所以称之为编译时异常，是因为在编译阶段就可以发现并提醒程序员提前处理这种异常，对于这类异常怎么提前去处理，还是得要实际使用中多练才能有更深的体会。
+**编译时异常：**之所以称之为编译时异常，是因为在编译阶段就可以发现并提醒程序员提前处理这种异常，对于这类异常怎么提前去处理，还是得要实际使用中多练才能有更深的体会。
 
-运行时异常：这类异常在编译时不会报错，但是编译通过之后在运行时又会出错，所以叫运行时异常，比如对于表达式10/0，除数为0肯定是错的，但是编译器并不会识别并提醒，编译通过之后运行的时候肯定就会报错了。
+**运行时异常：**这类异常在编译时不会报错，但是编译通过之后在运行时又会出错，所以叫运行时异常，比如对于表达式10/0，除数为0肯定是错的，但是编译器并不会识别并提醒，编译通过之后运行的时候肯定就会报错了。
 
-异常处理：处理异常的方式有两种，一种是使用throws关键字和throw关键字，将异常抛出给上一级，让上一级去处理（上一级此时必须处理这个异常）；另一种是使用“try...catch”语句把异常捕获，但是注意，捕获到了这个异常不一定要去处理它，让它直接“过”也是允许的。
-
-
+**异常处理：**处理异常的方式有两种，一种是使用throws关键字和throw关键字，将异常抛出给上一级，让上一级去处理（上一级此时必须处理这个异常）；另一种是使用“try...catch”语句把异常捕获，但是注意，捕获到了这个异常不一定要去处理它，让它直接“过”也是允许的。
 
 ### 2、throws抛出异常
 
@@ -25,11 +23,11 @@ public class ThrowsTest{
         // 这个异常，不处理的话，编译器就会不通过。
         func();
     }
-    
+
     // 使用throws关键字抛出可能发生的异常
     public static void func() throws ClassNotFoundException{
         System.out.println("my func!!!");
-        
+
         // 使用throw手动抛出一个异常
         throw new ClassNotFoundException("未找到类异常！");
     }
@@ -42,8 +40,6 @@ public class ThrowsTest{
 * Java内置类或者我们自己定义的类如果有使用throws关键字，就表示它是编译时异常，使用的时候必须要去处理它。
 * throws抛异常时，既可以抛出具体的异常，也可以抛出它的某个父类异常，最顶级的异常类可以是Exception类，它包含了所有异常。
 * 使用throws的时机就是如果这个异常希望调用者来处理，那么就是用throws抛出它，其他情况应该使用try捕获的方式。
-
-
 
 ### 3、try捕获异常
 
@@ -81,7 +77,7 @@ public class ExceptionTest {
                 } catch(IOException e) {
                     e.printStackTrace();
                 }
-                
+
             }
             System.out.println("关闭文件等其他操作。。。");
         }
@@ -91,12 +87,10 @@ public class ExceptionTest {
 
 注意，catch捕获的异常可以是具体的异常，也可以是具体异常的父类型异常，此时可以理解为多态。
 
-**异常对象中的常用方法：**
+**异常对象中的常用方法：**
 
 * **getMessage\(\)：**获取异常的简单描述信息。
 * **printStackTrace\(\)：**打印异常追踪的堆栈信息。
-
-
 
 ### 4、自定义异常
 
@@ -105,7 +99,7 @@ public class ExceptionTest {
 ```java
 public class MyException extends Exception{
     public MyException{
-        
+
     }
     public MyException(String s){
         super(s);
@@ -114,6 +108,4 @@ public class MyException extends Exception{
 ```
 
 自定义异常中的方法重写或者覆盖时需要注意一个语法问题，重写的方法抛出的异常不能比父类的方法更大或者说更宽泛，只能更小或者说更具体，比如父类异常方法抛出了IOException异常，那么异常子类中重写这个方法时就不能抛出Exception异常，但是可以抛出IOException异常或者FileNotFoundException异常。
-
-
 

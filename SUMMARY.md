@@ -9,7 +9,7 @@
   * [流程控制](basic/flow-control.md)
   * [数组](basic/shu-zu.md)
   * [异常](basic/yi-chang.md)
-  * 泛型
+  * [泛型](basic/fan-xing.md)
 * [Java面向对象](object-oriented/README.md)
   * [方法](object-oriented/method.md)
   * [类和对象](object-oriented/class-object.md)
