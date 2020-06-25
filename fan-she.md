@@ -11,8 +11,6 @@
 * **java.lang.reflect.Constructor：**代表字节码中的构造方法字节码，表示一个构造方法。
 * **java.lang.reflect.Field：**代表字节码中的属性字节码，表示一个属性。
 
- 
-
 ### 2. 反射类字节码Class（类/类型）
 
 获取类的字节码（java.lang.Class类）有三种方式：
@@ -35,8 +33,6 @@ Class中常用的方法：
 * **Class&lt;? super T&gt; getSuperclass\(\)：**获取类的父类。
 * **Class&lt;?&gt;\[\] getInterfaces\(\)：**获取所有类实现的接口。
 
- 
-
 ### 3. 反射属性字节码Field（字段/属性）
 
 获取Field需要先获取到对应的类字节码Class，然后才能从类中获取到对应的Field（java.lang.reflect.Field）。
@@ -50,8 +46,6 @@ Field常用方法：
 * **Object get\(Object obj\)：**获取指定对象的Field值（属性值）。
 * **void setAccessible\(boolean flag\)：**设置为true时表示打破封装，如果不调用这个方法设置为true的话就没办法获取对象的私有属性了，调用这个方法之后就可以获取到所有的属性了，包括私有属性。
 
- 
-
 ### 4. 反射方法字节码Method（方法）
 
 获取Method需要先获取到对应的类字节码Class，然后才能从类中获取到对应的Method（java.lang.reflect.Method）。
@@ -60,10 +54,8 @@ Method中的常用方法：
 
 * **Class&lt;?&gt; getReturnType\(\)：**获取返回值的数据类型。
 * **Class&lt;?&gt;\[\] getParameterTypes\(\)：**获取方法的参数类型列表。
-* **int getModifiers\(\)：**返回修饰符列表的代号，此代号可以使用java.lang.reflect.Modifier的静态方法toString方法传入代号获取到**具体的修饰符名称列表。  **
+* **int getModifiers\(\)：**返回修饰符列表的代号，此代号可以使用java.lang.reflect.Modifier的静态方法toString方法传入代号获取到具体的修饰符名称列表。
 * **Object invoke\(Object obj, Object... args\)：**调用指定对象的方法。
-
- 
 
 ### 5. 反射构造方法Constructor（构造方法）
 
