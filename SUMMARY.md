@@ -34,6 +34,6 @@
   * [死锁](multi-thread/dead-lock.md)
   * [定时器](multi-thread/timer.md)
   * [wait和notify](multi-thread/wait-notify.md)
-* [反射](fan-she.md)
-* [注解](zhu-jie.md)
+* [反射](reflect/reflect.md)
+* [注解](annotation/annotation.md)
 
